@@ -2,7 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchProducts = createAsyncThunk(
   "productsSlice/fetchProducts",
   async () => {
-    const res = await fetch("http://localhost:5000/products");
+    const res = await fetch(
+      "https://aya-abdelsalam.github.io/api/api.json/products"
+    );
     const data = await res.json();
     return data;
   }
@@ -10,11 +12,16 @@ export const fetchProducts = createAsyncThunk(
 export const deleteProducts = createAsyncThunk(
   "productsSlice/deleteProducts",
   async (id) => {
-    const res = await fetch(`http://localhost:5000/products/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `https://aya-abdelsalam.github.io/api/api.json/products/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = await res.json();
-    const res2 = await fetch("http://localhost:5000/products");
+    const res2 = await fetch(
+      "https://aya-abdelsalam.github.io/api/api.json/products"
+    );
     const data2 = await res2.json();
     return data2;
   }

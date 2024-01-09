@@ -2,7 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchUsers = createAsyncThunk(
   "usersSlices/fetchUsers",
   async () => {
-    const res = await fetch("http://localhost:5000/users");
+    const res = await fetch(
+      "https://aya-abdelsalam.github.io/api/api.json/users"
+    );
     const data = await res.json();
     return data;
   }
@@ -10,7 +12,9 @@ export const fetchUsers = createAsyncThunk(
 export const fetchOrders = createAsyncThunk(
   "usersSlices/fetchOrders",
   async () => {
-    const res = await fetch("http://localhost:5000/orders");
+    const res = await fetch(
+      "https://aya-abdelsalam.github.io/api/api.json/orders"
+    );
     const data = await res.json();
     return data;
   }
