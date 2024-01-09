@@ -1,0 +1,3 @@
+a.active:not(.logoHome) {
+    border-bottom: 4px solid var(--bg--second);
+}
