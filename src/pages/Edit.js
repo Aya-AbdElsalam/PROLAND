@@ -17,7 +17,7 @@ export default function Edit() {
   const [age, setAge] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/team/${id}`)
+    fetch(` https://prolanddata.onrender.com/team/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setAge(data.age);
@@ -27,7 +27,7 @@ export default function Edit() {
       });
   }, []);
   function editMember() {
-    fetch(`http://localhost:5000/team/${id}`, {
+    fetch(` https://prolanddata.onrender.com/team/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

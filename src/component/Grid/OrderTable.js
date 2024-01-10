@@ -71,11 +71,11 @@ export default function OrdersTable({ rows }) {
       initialState={{
         pagination: {
           paginationModel: {
-            pageSize: 5,
+            pageSize: 7,
           },
         },
       }}
-      pageSizeOptions={[5]}
+      pageSizeOptions={[7]}
     />
   );
 }

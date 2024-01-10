@@ -16,8 +16,9 @@ export default function AddProducts() {
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
   useEffect(() => {}, []);
-  function addProduct() {
-    fetch(`http://localhost:5000/products`, {
+  function addProduct(e) {
+    e.preventDefault();
+    fetch(` https://prolanddata.onrender.com/products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +32,11 @@ export default function AddProducts() {
       }),
     })
       .then((res) => res.json())
-      .then(navigate("../products"));
+      .then(
+        setTimeout(() => {
+          navigate("../products");
+        }, 3000)
+      );
   }
 
   const inoutRef = useRef(null);
@@ -143,8 +148,8 @@ export default function AddProducts() {
                   <Button
                     variant="outlined"
                     type="submit"
-                    onClick={() => {
-                      addProduct();
+                    onClick={(e) => {
+                      addProduct(e);
                     }}
                   >
                     sumbit

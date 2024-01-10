@@ -17,7 +17,7 @@ export default function EditProducts() {
   const [price, setPrice] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(` https://prolanddata.onrender.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.title);
@@ -27,7 +27,7 @@ export default function EditProducts() {
       });
   }, []);
   function editProduct() {
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(` https://prolanddata.onrender.com/products/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

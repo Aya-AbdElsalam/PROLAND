@@ -310,7 +310,9 @@ export default function NavBar(props) {
               <Tooltip title={"Admin panel"}>
                 <AdminPanelSettingsIcon
                   onClick={() => {
-                    navigate("dashboard");
+                    localStorage.getItem("user")
+                      ? navigate("dashboard")
+                      : navigate("signIn");
                   }}
                   sx={{ fontSize: 30, cursor: "pointer" }}
                 />

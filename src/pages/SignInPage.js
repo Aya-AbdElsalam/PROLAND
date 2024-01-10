@@ -30,13 +30,15 @@ export default function SignIn() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchadmin());
-  }, []);
+  }, [dispatch]);
   function SignIn() {
     if (admin[0].user !== user || admin[0].pass !== pass) {
       setError(true);
     } else {
       localStorage.setItem("user", user);
-      navigate("../dashboard");
+      setTimeout(() => {
+        navigate("../dashboard");
+      }, 1000);
     }
   }
   return (

@@ -2,9 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchadmin = createAsyncThunk(
   "adminSlice/fetchadmin",
   async () => {
-    const res = await fetch(
-      "https://aya-abdelsalam.github.io/api/api.json/admin"
-    );
+    const res = await fetch("https://prolanddata.onrender.com/admin");
     const data = await res.json();
     return data;
   }

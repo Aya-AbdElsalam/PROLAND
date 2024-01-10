@@ -1,22 +1,26 @@
 import "./App.css";
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import SignIn from "./pages/SignInPage";
 import LandingPage from "./pages/landingPage";
 import NavBar from "./component/navBar/NavBar";
 import Users from "./pages/Users";
 import Orders from "./pages/Orders";
 import Footer from "./component/Footer/Footer";
-const DashBoardLazy = React.lazy(() => import("./pages/DashBoard"));
-const OurTeamLazy = React.lazy(() => import("./pages/OurTeam"));
-const EditLazy = React.lazy(() => import("./pages/Edit"));
-const AddLazy = React.lazy(() => import("./pages/Add"));
-const EditProductsLazy = React.lazy(() => import("./pages/EditProduct"));
-const AddProductsLazy = React.lazy(() => import("./pages/AddProducts"));
-const ProductsPageLazy = React.lazy(() => import("./pages/Products"));
-const DashBoardHomeLazy = React.lazy(() => import("./pages/dashBoardHome"));
+import DashBoard from "./pages/DashBoard";
+import OurTeam from "./pages/OurTeam";
+import Edit from "./pages/Edit";
+import Add from "./pages/Add";
+import EditProducts from "./pages/EditProduct";
+import AddProducts from "./pages/AddProducts";
+import ProductsPage from "./pages/Products";
+import DashBoardHome from "./pages/dashBoardHome";
 
 function App() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div
       className="App"
@@ -45,34 +49,29 @@ function App() {
             </>
           }
         ></Route>
+        <Route path="dashboard" />
         <Route
           path="dashboard"
           element={
             localStorage.getItem("user") ? (
-              <DashBoardLazy />
+              <DashBoard></DashBoard>
             ) : (
               <>
-                <NavBar />
-                <SignIn />
+                <NavBar></NavBar>
+                <SignIn></SignIn>
               </>
             )
           }
         >
-          <Route index element={<DashBoardHomeLazy />}></Route>
+          <Route index element={<DashBoardHome />}></Route>
 
-          <Route path="team" element={<OurTeamLazy />}></Route>
-          <Route path="team/edit/:id" element={<EditLazy />}></Route>
-          <Route path="team/addMember" element={<AddLazy />}></Route>
+          <Route path="team" element={<OurTeam />}></Route>
+          <Route path="team/edit/:id" element={<Edit />}></Route>
+          <Route path="team/addMember" element={<Add />}></Route>
           {/*  */}
-          <Route path="products" element={<ProductsPageLazy />}></Route>
-          <Route
-            path="products/edit/:id"
-            element={<EditProductsLazy />}
-          ></Route>
-          <Route
-            path="products/addProduct"
-            element={<AddProductsLazy />}
-          ></Route>
+          <Route path="products" element={<ProductsPage />}></Route>
+          <Route path="products/edit/:id" element={<EditProducts />}></Route>
+          <Route path="products/addProduct" element={<AddProducts />}></Route>
           {/*  */}
           <Route path="users" element={<Users />}></Route>
           <Route path="orders" element={<Orders />}></Route>

@@ -17,8 +17,10 @@ export default function Add() {
   const [age, setAge] = useState();
 
   useEffect(() => {}, []);
-  function editMember() {
-    fetch(`http://localhost:5000/team`, {
+  function addMember(e) {
+    e.preventDefault();
+
+    fetch(`https://prolanddata.onrender.com/team`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +34,11 @@ export default function Add() {
       }),
     })
       .then((res) => res.json())
-      .then(navigate("../team"));
+      .then(
+        setTimeout(() => {
+          navigate("../team");
+        }, 1000)
+      );
   }
 
   const inoutRef = useRef(null);
@@ -138,8 +144,8 @@ export default function Add() {
                   <Button
                     variant="outlined"
                     type="submit"
-                    onClick={() => {
-                      editMember();
+                    onClick={(e) => {
+                      addMember(e);
                     }}
                   >
                     submit
