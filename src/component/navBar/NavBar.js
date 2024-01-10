@@ -44,9 +44,9 @@ export default function NavBar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [isScroll, setIsScroll] = React.useState(false);
   const theme = useTheme();
-  const handleOpenNavMenu = React.memo((event) => {
+  const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  }, []);
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -155,8 +155,8 @@ export default function NavBar(props) {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={() => {
-                  handleOpenNavMenu();
+                onClick={(e) => {
+                  handleOpenNavMenu(e);
                 }}
                 color="inherit"
               >

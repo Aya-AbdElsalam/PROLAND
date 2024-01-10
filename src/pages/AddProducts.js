@@ -15,6 +15,8 @@ export default function AddProducts() {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
+  const [model, setModel] = useState();
+
   useEffect(() => {}, []);
   function addProduct(e) {
     e.preventDefault();
@@ -29,6 +31,7 @@ export default function AddProducts() {
         title,
         description,
         price,
+        model,
       }),
     })
       .then((res) => res.json())
@@ -128,6 +131,20 @@ export default function AddProducts() {
                   }}
                   onInput={(e) => {
                     setDescription(e.target.value);
+                  }}
+                />
+                <TextField
+                  sx={{ marginY: "15px" }}
+                  fullWidth
+                  required
+                  label="MODEL"
+                  value={model}
+                  type="text"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  onInput={(e) => {
+                    setModel(e.target.value);
                   }}
                 />
                 <TextField
