@@ -244,17 +244,14 @@ export default function DashBoardHome() {
             <GeoChath data={GeoChart} />
           </Paper>
         </Stack>
-        <Stack direction={"row"} gap={3} flexWrap={"wrap"}>
+        <Stack direction={"row"} flexWrap={"wrap"}>
           <Paper
             elevation={3}
             sx={{
               height: "100%",
-              width: "220px",
-              flexGrow: "1",
-              overflowX: "auto",
               flexBasis: "100%",
-              display: "flex",
-              flexWrap: "wrap",
+              width: "220px",
+              overflowX: "auto",
             }}
           >
             <Typography
@@ -266,8 +263,8 @@ export default function DashBoardHome() {
             >
               New Customers
             </Typography>
-            <Box width={"1000px"} flexBasis={"100%"}>
-              <TableUsers rows={rowsUser} />
+            <Box width={"1100px"}>
+              <TableUsers rows={rowsUser} width={"1100px"} />
             </Box>
           </Paper>
           <Paper
@@ -275,11 +272,8 @@ export default function DashBoardHome() {
             sx={{
               height: "100%",
               width: "220px",
-              flexGrow: "1",
-              overflowX: "auto",
               flexBasis: "100%",
-              display: "flex",
-              flexWrap: "wrap",
+              overflowX: "auto",
             }}
           >
             <Typography
@@ -291,8 +285,8 @@ export default function DashBoardHome() {
             >
               Recent Orders
             </Typography>
-            <Box width={"1000px"} flexBasis={"100%"}>
-              <OrdersTable rows={rowsOrders} />
+            <Box width={"1100px"}>
+              <OrdersTable rows={rowsOrders} width={"1100px"} />
             </Box>
           </Paper>
         </Stack>

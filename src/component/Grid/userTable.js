@@ -2,7 +2,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { GridToolbar } from "@mui/x-data-grid";
 export default function TableUsers({ rows }) {
   const columns = [
-    { field: "id", headerName: "ID", width: 40 },
+    { field: "id", headerName: "ID", width: 50 },
     {
       field: "fullName",
       headerName: "Full name",
@@ -26,6 +26,7 @@ export default function TableUsers({ rows }) {
     {
       field: "TotalBuy",
       headerName: "Total Buy",
+      flex: 1,
     },
   ];
 

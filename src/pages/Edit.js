@@ -26,7 +26,8 @@ export default function Edit() {
         setTitle(data.jopTitle);
       });
   }, []);
-  function editMember() {
+  function editMember(e) {
+    e.preventDefault();
     fetch(` https://prolanddata.onrender.com/team/${id}`, {
       method: "PUT",
       headers: {
@@ -41,7 +42,11 @@ export default function Edit() {
       }),
     })
       .then((res) => res.json())
-      .then(navigate("../team"));
+      .then(
+        setTimeout(() => {
+          navigate("../team");
+        }, 3000)
+      );
   }
 
   const inoutRef = useRef(null);
@@ -135,8 +140,8 @@ export default function Edit() {
                   <Button
                     variant="outlined"
                     type="submit"
-                    onClick={() => {
-                      editMember();
+                    onClick={(e) => {
+                      editMember(e);
                     }}
                   >
                     sumbit

@@ -133,7 +133,7 @@ export default function ProductsItems() {
                 borderTop={"1px solid var(--p--main)"}
                 paddingY={"50px"}
               >
-                {item.longDes}
+                {item.longDes ? item.longDes : item.description}
               </Typography>
               <Button
                 variant="contained"
@@ -158,7 +158,7 @@ export default function ProductsItems() {
               display={"inline-flex"}
               position={"relative"}
               alignItems={"center"}
-              marginLeft={order === true ? "100%" : "100%"}
+              marginLeft={order === true ? "100%" : "25%"}
             >
               <Button
                 variant="outlined"

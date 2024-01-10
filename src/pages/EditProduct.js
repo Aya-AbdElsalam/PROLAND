@@ -26,7 +26,8 @@ export default function EditProducts() {
         setPrice(data.price);
       });
   }, []);
-  function editProduct() {
+  function editProduct(e) {
+    e.preventDefault();
     fetch(` https://prolanddata.onrender.com/products/${id}`, {
       method: "PUT",
       headers: {
@@ -41,7 +42,11 @@ export default function EditProducts() {
       }),
     })
       .then((res) => res.json())
-      .then(navigate("../products"));
+      .then(
+        setTimeout(() => {
+          navigate("../products");
+        }, 3000)
+      );
   }
 
   const inoutRef = useRef(null);
@@ -129,8 +134,8 @@ export default function EditProducts() {
                   <Button
                     variant="outlined"
                     type="submit"
-                    onClick={() => {
-                      editProduct();
+                    onClick={(e) => {
+                      editProduct(e);
                     }}
                   >
                     sumbit

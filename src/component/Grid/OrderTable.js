@@ -3,7 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { GridToolbar } from "@mui/x-data-grid";
 export default function OrdersTable({ rows }) {
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { overFlow: "none", field: "id", headerName: "ID", width: 50 },
     {
       field: "Customer",
       headerName: "Customer",
@@ -22,9 +22,10 @@ export default function OrdersTable({ rows }) {
     {
       field: "item",
       headerName: "Item",
-      flex: 1,
+      flex: 1.5,
     },
     {
+      width: 30,
       field: "price",
       headerName: "Price",
     },
@@ -58,7 +59,6 @@ export default function OrdersTable({ rows }) {
     {
       field: "payment",
       headerName: "Payment",
-      flex: 1,
     },
   ];
   return (
