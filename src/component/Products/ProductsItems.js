@@ -110,7 +110,7 @@ export default function ProductsItems() {
               display={"inline-flex"}
               position={"relative"}
               marginLeft={order === true ? "-200%" : "0"}
-              sx={{ textWrap: "wrap", transition: "all 3s ease" }}
+              sx={{ textWrap: "wrap", transition: "all 1s ease" }}
             >
               <Box>
                 <Typography color={"var(--p--main)"}> SMART WATCH</Typography>

@@ -15,7 +15,7 @@ export default function EditProducts() {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
-
+  const [model, setModel] = useState();
   useEffect(() => {
     fetch(` https://prolanddata.onrender.com/products/${id}`)
       .then((res) => res.json())
@@ -39,6 +39,7 @@ export default function EditProducts() {
         title,
         description,
         price,
+        model,
       }),
     })
       .then((res) => res.json())
@@ -115,6 +116,20 @@ export default function EditProducts() {
                   }}
                   onInput={(e) => {
                     setDescription(e.target.value);
+                  }}
+                />
+                <TextField
+                  sx={{ marginY: "15px" }}
+                  fullWidth
+                  required
+                  label="MODEL"
+                  value={model}
+                  type="text"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  onInput={(e) => {
+                    setModel(e.target.value);
                   }}
                 />
                 <TextField
