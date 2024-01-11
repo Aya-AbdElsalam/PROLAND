@@ -15,6 +15,8 @@ import { useEffect, useState } from "react";
 import { fetchProducts } from "../../rtk/slices/productsSlice";
 import { useForm } from "react-hook-form";
 import { Close } from "@mui/icons-material";
+import Skeleton from "@mui/material/Skeleton";
+import PropTypes from "prop-types";
 
 export default function ProductsItems() {
   const dispatch = useDispatch();
@@ -22,7 +24,10 @@ export default function ProductsItems() {
     dispatch(fetchProducts());
   }, [dispatch]);
   const products = useSelector((state) => {
-    return state.productsSlice;
+    return state.productsSlice.product;
+  });
+  const loading = useSelector((state) => {
+    return state.productsSlice.loading;
   });
   const [item, setItem] = useState({});
   const [popOver, setPopover] = useState(false);
@@ -273,18 +278,18 @@ export default function ProductsItems() {
             md: "space-between",
           }}
         >
-          {products.map((p) => {
-            return (
-              <Card
-                sx={{
-                  width: 250,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-                key={p.id}
-              >
-                <Box sx={{ height: 220 }} image={p.img}>
+          {(loading ? products : Array.from(new Array(3))).map((p, index) => (
+            <Card
+              sx={{
+                width: 250,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+              key={index}
+            >
+              <Box sx={{ height: 220 }}>
+                {loading ? (
                   <img
                     src={p.img}
                     height={"100%"}
@@ -292,47 +297,67 @@ export default function ProductsItems() {
                     alt=""
                     loading="lazy"
                   />
-                </Box>
+                ) : (
+                  <Skeleton variant="rectangular" width={210} height={118} />
+                )}
+              </Box>
 
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="div"
-                    color={"var(--bg--second)"}
-                  >
-                    {p.title}
+              {loading ? (
+                <>
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      component="div"
+                      color={"var(--bg--second)"}
+                    >
+                      {p.title}
+                    </Typography>
+                    <Typography variant="body2" color="var(--p--main)">
+                      {p.description}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      fontWeight={"bold"}
+                      color="red"
+                      fontSize={"20px"}
+                      sx={{ my: "10px" }}
+                    >
+                      ${p.price}
+                    </Typography>
+                  </CardContent>
+                  <CardActions sx={{ flexGrow: "1", alignItems: "flex-end" }}>
+                    <Button
+                      size="small"
+                      variant="outlined"
+                      onClick={() => {
+                        setPopover(true);
+                        setItem(p);
+                      }}
+                    >
+                      CHOOSE
+                    </Button>
+                  </CardActions>
+                </>
+              ) : (
+                <Box sx={{ pt: 0.5 }}>
+                  <Typography variant="h3" width={"220px"}>
+                    <Skeleton width={"100%"} />
                   </Typography>
-                  <Typography variant="body2" color="var(--p--main)">
-                    {p.description}
+                  <Typography variant="h5" width={"220px"}>
+                    <Skeleton width={"100%"} />
+                    <Skeleton width={"100%"} />
+                    <Skeleton width={"100%"} />
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    fontWeight={"bold"}
-                    color="red"
-                    fontSize={"20px"}
-                    sx={{ my: "10px" }}
-                  >
-                    ${p.price}
-                  </Typography>
-                </CardContent>
-                <CardActions sx={{ flexGrow: "1", alignItems: "flex-end" }}>
-                  <Button
-                    size="small"
-                    variant="outlined"
-                    onClick={() => {
-                      setPopover(true);
-                      setItem(p);
-                    }}
-                  >
-                    CHOOSE
-                  </Button>
-                </CardActions>
-              </Card>
-            );
-          })}
+                </Box>
+              )}
+            </Card>
+          ))}
         </Stack>
       </Container>
     </>
   );
 }
+ProductsItems.propTypes = {
+  loading: PropTypes.bool,
+};

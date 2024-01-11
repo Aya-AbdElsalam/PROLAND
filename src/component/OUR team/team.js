@@ -3,6 +3,7 @@ import {
   Card,
   CardContent,
   Container,
+  Skeleton,
   Stack,
   Typography,
 } from "@mui/material";
@@ -17,9 +18,11 @@ export default function Team() {
     dispatch(fetchteam());
   }, [dispatch]);
   const team = useSelector((state) => {
-    return state.teamSlice;
+    return state.teamSlice.team;
   });
-
+  const loading = useSelector((state) => {
+    return state.teamSlice.loading;
+  });
   return (
     <Container sx={{ textAlign: "center", my: "80px" }}>
       <Title
@@ -40,18 +43,18 @@ export default function Team() {
           md: "space-between",
         }}
       >
-        {team.map((p) => {
-          return (
-            <Card
-              sx={{
-                width: "250px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-              key={p.id}
-            >
-              <Box sx={{ height: 250 }} image={p.img}>
+        {(loading ? team : Array.from(new Array(3))).map((p, index) => (
+          <Card
+            sx={{
+              width: "250px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+            key={index}
+          >
+            <Box sx={{ height: 250 }}>
+              {loading ? (
                 <img
                   src={p.img}
                   height={"100%"}
@@ -59,19 +62,27 @@ export default function Team() {
                   alt=""
                   loading="lazy"
                 />
-              </Box>
+              ) : (
+                <Skeleton variant="rectangular" width={210} height={118} />
+              )}
+            </Box>
 
-              <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  {p.name}
-                </Typography>
-                <Typography variant="body2" color="var(--p--main)">
-                  {p.jopTitle}
-                </Typography>
-              </CardContent>
-            </Card>
-          );
-        })}
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="h6"
+                component="div"
+                width={loading ? "auto" : "200px"}
+                height={loading ? "auto" : "50px"}
+              >
+                {loading ? p.name : <Skeleton width={"100%"} />}
+              </Typography>
+              <Typography variant="body2" color="var(--p--main)">
+                {loading ? p.jopTitle : <Skeleton width={"100%"} />}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))}
       </Stack>
     </Container>
   );

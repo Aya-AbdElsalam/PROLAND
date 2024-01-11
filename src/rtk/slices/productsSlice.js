@@ -19,17 +19,24 @@ export const deleteProducts = createAsyncThunk(
     return data2;
   }
 );
-
 const productsSlice = createSlice({
-  initialState: [],
+  initialState: {
+    product: [],
+    loading: false,
+  },
   name: "productsSlice",
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      return action.payload;
+    builder.addCase(fetchProducts.pending, (state, action) => {
+      state.loading = false;
     });
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      state.loading = true;
+      state.product = action.payload;
+    });
+
     builder.addCase(deleteProducts.fulfilled, (state, action) => {
-      return action.payload;
+      state.product = action.payload;
     });
   },
 });

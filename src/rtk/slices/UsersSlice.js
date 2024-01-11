@@ -18,7 +18,9 @@ export const fetchOrders = createAsyncThunk(
 
 const usersSlices = createSlice({
   initialState: {
+    loading_users: false,
     users: [],
+    loading_orders: false,
     orders: [],
   },
   name: "usersSlices",
@@ -26,9 +28,11 @@ const usersSlices = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
       state.users = action.payload;
+      state.loading_users = true;
     });
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
       state.orders = action.payload;
+      state.loading_orders = true;
     });
   },
 });

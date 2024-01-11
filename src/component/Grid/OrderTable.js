@@ -1,7 +1,10 @@
 import { Box } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
-import { GridToolbar } from "@mui/x-data-grid";
+import { useSelector } from "react-redux";
+import Table from "./Table";
 export default function OrdersTable({ rows }) {
+  const loading = useSelector((state) => {
+    return state.usersSlices.loading_orders;
+  });
   const columns = [
     { overFlow: "none", field: "id", headerName: "ID", width: 50 },
     {
@@ -43,7 +46,7 @@ export default function OrdersTable({ rows }) {
           <Box
             sx={{
               backgroundColor:
-                status.status == "DELIVERED" ? "var(--bg--second)" : "black",
+                status.status === "DELIVERED" ? "var(--bg--second)" : "black",
               color: "white",
               width: "100%",
               textAlign: "center",
@@ -61,21 +64,5 @@ export default function OrdersTable({ rows }) {
       headerName: "Payment",
     },
   ];
-  return (
-    <DataGrid
-      rows={rows}
-      columns={columns}
-      slots={{
-        toolbar: GridToolbar,
-      }}
-      initialState={{
-        pagination: {
-          paginationModel: {
-            pageSize: 7,
-          },
-        },
-      }}
-      pageSizeOptions={[7]}
-    />
-  );
+  return <Table rows={rows} columns={columns} loading={loading} />;
 }

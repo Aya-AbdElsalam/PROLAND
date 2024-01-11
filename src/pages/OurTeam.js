@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteteam, fetchteam } from "../rtk/slices/teamSlice";
 import { Box, Container, Stack } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
-import { GridToolbar } from "@mui/x-data-grid";
 import { Diversity3, Edit, PersonAddAlt1 } from "@mui/icons-material";
+import Table from "../component/Grid/Table";
 
 export default function OurTeam() {
   const dispatch = useDispatch();
@@ -16,7 +15,10 @@ export default function OurTeam() {
     dispatch(fetchteam());
   }, [dispatch]);
   const team = useSelector((state) => {
-    return state.teamSlice;
+    return state.teamSlice.team;
+  });
+  const loading = useSelector((state) => {
+    return state.teamSlice.loading;
   });
   const columns = [
     { field: "id", headerName: "ID", width: 50 },
@@ -106,21 +108,7 @@ export default function OurTeam() {
       </Box>
       <Stack direction={"row"}>
         <Box width={"1000px"} flex={1}>
-          <DataGrid
-            rows={rows[0]}
-            columns={columns}
-            slots={{
-              toolbar: GridToolbar,
-            }}
-            initialState={{
-              pagination: {
-                paginationModel: {
-                  pageSize: 7,
-                },
-              },
-            }}
-            pageSizeOptions={[7]}
-          />
+          <Table rows={rows[0]} columns={columns} loading={loading} />;
         </Box>
       </Stack>
       <Button

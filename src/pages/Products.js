@@ -2,12 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Box, Container, Stack } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
-import { GridToolbar } from "@mui/x-data-grid";
 import { Edit, Loyalty, Queue } from "@mui/icons-material";
 import { deleteProducts, fetchProducts } from "../rtk/slices/productsSlice";
+import Table from "../component/Grid/Table";
 
 export default function ProductsPage() {
   const dispatch = useDispatch();
@@ -16,7 +15,10 @@ export default function ProductsPage() {
     dispatch(fetchProducts());
   }, [dispatch]);
   const products = useSelector((state) => {
-    return state.productsSlice;
+    return state.productsSlice.product;
+  });
+  const loading = useSelector((state) => {
+    return state.productsSlice.loading;
   });
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
@@ -106,21 +108,7 @@ export default function ProductsPage() {
       </Box>
       <Stack direction={"row"}>
         <Box width={"1000px"} flex={1}>
-          <DataGrid
-            rows={rows[0]}
-            columns={columns}
-            slots={{
-              toolbar: GridToolbar,
-            }}
-            initialState={{
-              pagination: {
-                paginationModel: {
-                  pageSize: 7,
-                },
-              },
-            }}
-            pageSizeOptions={[7]}
-          />
+          <Table rows={rows[0]} columns={columns} loading={loading} />;
         </Box>
       </Stack>
 

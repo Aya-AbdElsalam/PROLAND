@@ -19,15 +19,23 @@ export const deleteteam = createAsyncThunk(
 );
 
 const teamSlice = createSlice({
-  initialState: [],
+  initialState: {
+    loading: false,
+    team: [],
+  },
   name: "teamSlice",
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchteam.fulfilled, (state, action) => {
-      return action.payload;
+    builder.addCase(fetchteam.pending, (state, action) => {
+      state.loading = false;
     });
+    builder.addCase(fetchteam.fulfilled, (state, action) => {
+      state.loading = true;
+      state.team = action.payload;
+    });
+
     builder.addCase(deleteteam.fulfilled, (state, action) => {
-      return action.payload;
+      state.product = action.payload;
     });
   },
 });

@@ -5,10 +5,6 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import LoyaltyIcon from "@mui/icons-material/Loyalty";
 import {
   Close,
@@ -17,7 +13,7 @@ import {
   People,
   ShoppingBag,
 } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import ListNavBar from "./List";
 
 const drawerWidth = 190;
 
@@ -75,7 +71,6 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer(props) {
   const theme = useTheme();
-  const navigate = useNavigate();
   const handleDrawerClose = () => {
     props.setOpen(false);
   };
@@ -93,165 +88,42 @@ export default function MiniDrawer(props) {
       </DrawerHeader>
       <Divider sx={{ background: "white" }} />
       <List>
-        <ListItem
-          disablePadding
-          sx={{ display: "block" }}
-          onClick={() => {
-            navigate("../dashboard");
-          }}
-        >
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: props.open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                color: "white",
-
-                minWidth: 0,
-                mr: props.open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <Dashboard />
-            </ListItemIcon>
-            <ListItemText
-              primary="DASHBOARD"
-              sx={{ opacity: props.open ? 1 : 0 }}
-            />
-          </ListItemButton>
-        </ListItem>
+        <ListNavBar
+          open={props.open}
+          navigate={"../dashboard"}
+          icon={<Dashboard />}
+          text={"DASHBOARD"}
+        />
       </List>
       <Divider sx={{ background: "white" }} />
       <List>
-        <ListItem
-          disablePadding
-          sx={{ display: "block" }}
-          onClick={() => {
-            navigate("users");
-          }}
-        >
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: props.open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                color: "white",
-
-                minWidth: 0,
-                mr: props.open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <People />
-            </ListItemIcon>
-            <ListItemText
-              primary="USERS"
-              sx={{ opacity: props.open ? 1 : 0 }}
-            />
-          </ListItemButton>
-        </ListItem>
-        <ListItem
-          disablePadding
-          sx={{ display: "block" }}
-          onClick={() => {
-            navigate("orders");
-          }}
-        >
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: props.open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                color: "white",
-                minWidth: 0,
-                mr: props.open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <ShoppingBag />
-            </ListItemIcon>
-            <ListItemText
-              primary="ORDERS"
-              sx={{ opacity: props.open ? 1 : 0 }}
-            />
-          </ListItemButton>
-        </ListItem>
+        <ListNavBar
+          open={props.open}
+          navigate={"users"}
+          icon={<People />}
+          text={"USERS"}
+        />
+        <ListNavBar
+          open={props.open}
+          navigate={"orders"}
+          icon={<ShoppingBag />}
+          text={"ORDERS"}
+        />
       </List>
       <Divider sx={{ background: "white" }} />
       <List>
-        <ListItem
-          disablePadding
-          sx={{ display: "block" }}
-          onClick={() => {
-            navigate("team");
-          }}
-        >
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: props.open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                color: "white",
-
-                minWidth: 0,
-                mr: props.open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <Diversity3 />
-            </ListItemIcon>
-            <ListItemText
-              primary="OUR TEAM"
-              sx={{ opacity: props.open ? 1 : 0 }}
-            />
-          </ListItemButton>
-        </ListItem>
-        <ListItem
-          disablePadding
-          sx={{ display: "block" }}
-          onClick={() => {
-            navigate("products");
-          }}
-        >
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: props.open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                color: "white",
-                minWidth: 0,
-                mr: props.open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <LoyaltyIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="PRODUCTS"
-              sx={{ opacity: props.open ? 1 : 0 }}
-            />
-          </ListItemButton>
-        </ListItem>
+        <ListNavBar
+          open={props.open}
+          navigate={"team"}
+          icon={<Diversity3 />}
+          text={"OUR TEAM"}
+        />
+        <ListNavBar
+          open={props.open}
+          navigate={"products"}
+          icon={<LoyaltyIcon />}
+          text={"PRODUCTS"}
+        />
       </List>
     </Drawer>
   );

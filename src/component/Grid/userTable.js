@@ -1,6 +1,9 @@
-import { DataGrid } from "@mui/x-data-grid";
-import { GridToolbar } from "@mui/x-data-grid";
+import { useSelector } from "react-redux";
+import Table from "./Table";
 export default function TableUsers({ rows }) {
+  const loading = useSelector((state) => {
+    return state.usersSlices.loading_users;
+  });
   const columns = [
     { field: "id", headerName: "ID", width: 50 },
     {
@@ -30,21 +33,5 @@ export default function TableUsers({ rows }) {
     },
   ];
 
-  return (
-    <DataGrid
-      rows={rows}
-      columns={columns}
-      slots={{
-        toolbar: GridToolbar,
-      }}
-      initialState={{
-        pagination: {
-          paginationModel: {
-            pageSize: 7,
-          },
-        },
-      }}
-      pageSizeOptions={[7]}
-    />
-  );
+  return <Table rows={rows} columns={columns} loading={loading} />;
 }

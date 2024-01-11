@@ -5,6 +5,7 @@ import {
   Button,
   Container,
   FormControl,
+  Skeleton,
   Stack,
   TextField,
 } from "@mui/material";
@@ -15,6 +16,7 @@ export default function Edit() {
   const [name, setName] = useState();
   const [jopTitle, setTitle] = useState();
   const [age, setAge] = useState();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch(` https://prolanddata.onrender.com/team/${id}`)
@@ -24,6 +26,7 @@ export default function Edit() {
         setName(data.name);
         setImg(data.img);
         setTitle(data.jopTitle);
+        setLoading(true);
       });
   }, []);
   function editMember(e) {
@@ -81,84 +84,102 @@ export default function Edit() {
             width={"263px"}
             height={"263px"}
           >
-            <img
-              src={img}
-              alt=""
-              loading="lazy"
-              style={{ width: "100%", height: "100%", borderRadius: "17px" }}
-            />
-            <input
-              type="file"
-              accept="image/*"
-              ref={inoutRef}
-              style={{ display: "none" }}
-              onChange={handleImageChange}
-            />
+            {loading ? (
+              <>
+                <img
+                  src={img}
+                  alt=""
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "17px",
+                  }}
+                />
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={inoutRef}
+                  style={{ display: "none" }}
+                  onChange={handleImageChange}
+                />
+              </>
+            ) : (
+              <Skeleton variant="rectangular" width={210} height={200} />
+            )}
           </Box>
           <Box sx={{ width: "100%" }}>
-            <form>
-              <FormControl fullWidth>
-                <TextField
-                  fullWidth
-                  label="Name"
-                  value={name}
-                  type="text"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onInput={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-                <TextField
-                  sx={{ marginY: "15px" }}
-                  fullWidth
-                  label="Jop Description"
-                  value={jopTitle}
-                  type="text"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onInput={(e) => {
-                    setTitle(e.target.value);
-                  }}
-                />
-                <TextField
-                  sx={{ marginY: "15px" }}
-                  fullWidth
-                  label="Age"
-                  value={age}
-                  type="text"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onInput={(e) => {
-                    setAge(e.target.value);
-                  }}
-                />
-                <Stack direction={"row"} gap={2}>
-                  <Button
-                    variant="outlined"
-                    type="submit"
-                    onClick={(e) => {
-                      editMember(e);
+            {loading ? (
+              <form>
+                <FormControl fullWidth>
+                  <TextField
+                    fullWidth
+                    label="Name"
+                    value={name}
+                    type="text"
+                    InputLabelProps={{
+                      shrink: true,
                     }}
-                  >
-                    sumbit
-                  </Button>
-                  <Button
-                    sx={{ color: "red", borderColor: "red" }}
-                    variant="outlined"
-                    type="cancel"
-                    onClick={() => {
-                      navigate("../team");
+                    onInput={(e) => {
+                      setName(e.target.value);
                     }}
-                  >
-                    Cancel
-                  </Button>
-                </Stack>
-              </FormControl>
-            </form>
+                  />
+                  <TextField
+                    sx={{ marginY: "15px" }}
+                    fullWidth
+                    label="Jop Description"
+                    value={jopTitle}
+                    type="text"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onInput={(e) => {
+                      setTitle(e.target.value);
+                    }}
+                  />
+                  <TextField
+                    sx={{ marginY: "15px" }}
+                    fullWidth
+                    label="Age"
+                    value={age}
+                    type="text"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onInput={(e) => {
+                      setAge(e.target.value);
+                    }}
+                  />
+                  <Stack direction={"row"} gap={2}>
+                    <Button
+                      variant="outlined"
+                      type="submit"
+                      onClick={(e) => {
+                        editMember(e);
+                      }}
+                    >
+                      sumbit
+                    </Button>
+                    <Button
+                      sx={{ color: "red", borderColor: "red" }}
+                      variant="outlined"
+                      type="cancel"
+                      onClick={() => {
+                        navigate("../team");
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                  </Stack>
+                </FormControl>
+              </form>
+            ) : (
+              <Box sx={{ width: "100%" }}>
+                <Skeleton />
+                <Skeleton animation="wave" />
+                <Skeleton animation={false} />
+              </Box>
+            )}
           </Box>
         </Stack>
       </Container>

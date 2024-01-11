@@ -5,6 +5,7 @@ import {
   Button,
   Container,
   FormControl,
+  Skeleton,
   Stack,
   TextField,
 } from "@mui/material";
@@ -16,6 +17,8 @@ export default function EditProducts() {
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
   const [model, setModel] = useState();
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     fetch(` https://prolanddata.onrender.com/products/${id}`)
       .then((res) => res.json())
@@ -24,6 +27,7 @@ export default function EditProducts() {
         setDescription(data.description);
         setImg(data.img);
         setPrice(data.price);
+        setLoading(true);
       });
   }, []);
   function editProduct(e) {
@@ -76,98 +80,116 @@ export default function EditProducts() {
         </Box>
         <Stack direction={"row"} marginY={"50px"} gap={5} flexWrap={"wrap"}>
           <Box onClick={handleChangeFile} width={"263px"} height={"263px"}>
-            <img
-              src={img}
-              alt=""
-              loading="lazy"
-              style={{ width: "100%", height: "100%", borderRadius: "17px" }}
-            />
-            <input
-              type="file"
-              accept="image/*"
-              ref={inoutRef}
-              style={{ display: "none" }}
-              onChange={handleImageChange}
-            />
+            {loading ? (
+              <>
+                <img
+                  src={img}
+                  alt=""
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "17px",
+                  }}
+                />
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={inoutRef}
+                  style={{ display: "none" }}
+                  onChange={handleImageChange}
+                />
+              </>
+            ) : (
+              <Skeleton variant="rectangular" width={210} height={200} />
+            )}
           </Box>
           <Box sx={{ width: "100%" }}>
-            <form>
-              <FormControl fullWidth>
-                <TextField
-                  fullWidth
-                  label="Title"
-                  value={title}
-                  type="text"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onInput={(e) => {
-                    setTitle(e.target.value);
-                  }}
-                />
-                <TextField
-                  sx={{ marginY: "15px" }}
-                  fullWidth
-                  label="Description"
-                  value={description}
-                  type="text"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onInput={(e) => {
-                    setDescription(e.target.value);
-                  }}
-                />
-                <TextField
-                  sx={{ marginY: "15px" }}
-                  fullWidth
-                  required
-                  label="MODEL"
-                  value={model}
-                  type="text"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onInput={(e) => {
-                    setModel(e.target.value);
-                  }}
-                />
-                <TextField
-                  sx={{ marginY: "15px" }}
-                  fullWidth
-                  label="Price"
-                  value={price}
-                  type="text"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onInput={(e) => {
-                    setPrice(e.target.value);
-                  }}
-                />
-                <Stack direction={"row"} gap={2}>
-                  <Button
-                    variant="outlined"
-                    type="submit"
-                    onClick={(e) => {
-                      editProduct(e);
+            {loading ? (
+              <form>
+                <FormControl fullWidth>
+                  <TextField
+                    fullWidth
+                    label="Title"
+                    value={title}
+                    type="text"
+                    InputLabelProps={{
+                      shrink: true,
                     }}
-                  >
-                    sumbit
-                  </Button>
-                  <Button
-                    sx={{ color: "red", borderColor: "red" }}
-                    variant="outlined"
-                    type="cancel"
-                    onClick={() => {
-                      navigate("../products");
+                    onInput={(e) => {
+                      setTitle(e.target.value);
                     }}
-                  >
-                    Cancel
-                  </Button>
-                </Stack>
-              </FormControl>
-            </form>
+                  />
+                  <TextField
+                    sx={{ marginY: "15px" }}
+                    fullWidth
+                    label="Description"
+                    value={description}
+                    type="text"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onInput={(e) => {
+                      setDescription(e.target.value);
+                    }}
+                  />
+                  <TextField
+                    sx={{ marginY: "15px" }}
+                    fullWidth
+                    required
+                    label="MODEL"
+                    value={model}
+                    type="text"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onInput={(e) => {
+                      setModel(e.target.value);
+                    }}
+                  />
+                  <TextField
+                    sx={{ marginY: "15px" }}
+                    fullWidth
+                    label="Price"
+                    value={price}
+                    type="text"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onInput={(e) => {
+                      setPrice(e.target.value);
+                    }}
+                  />
+                  <Stack direction={"row"} gap={2}>
+                    <Button
+                      variant="outlined"
+                      type="submit"
+                      onClick={(e) => {
+                        editProduct(e);
+                      }}
+                    >
+                      sumbit
+                    </Button>
+                    <Button
+                      sx={{ color: "red", borderColor: "red" }}
+                      variant="outlined"
+                      type="cancel"
+                      onClick={() => {
+                        navigate("../products");
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                  </Stack>
+                </FormControl>
+              </form>
+            ) : (
+              <Box sx={{ width: "100%" }}>
+                <Skeleton />
+                <Skeleton animation="wave" />
+                <Skeleton animation={false} />
+              </Box>
+            )}
           </Box>
         </Stack>
       </Container>
