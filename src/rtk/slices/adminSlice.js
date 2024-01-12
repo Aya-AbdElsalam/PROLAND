@@ -8,12 +8,16 @@ export const fetchadmin = createAsyncThunk(
   }
 );
 const adminSlice = createSlice({
-  initialState: [],
+  initialState: {
+    loading: false,
+    admin: [],
+  },
   name: "adminSlice",
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchadmin.fulfilled, (state, action) => {
-      return action.payload;
+      state.admin = action.payload;
+      state.loading = true;
     });
   },
 });

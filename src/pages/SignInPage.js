@@ -1,4 +1,4 @@
-import { Alert, Box, Typography } from "@mui/material";
+import { Alert, Box, Skeleton, Typography } from "@mui/material";
 import bg from "../images/bgSignIn.webp";
 import * as React from "react";
 import IconButton from "@mui/material/IconButton";
@@ -25,7 +25,10 @@ export default function SignIn() {
     event.preventDefault();
   };
   const admin = useSelector((state) => {
-    return state.adminSlice;
+    return state.adminSlice.admin;
+  });
+  const loading = useSelector((state) => {
+    return state.adminSlice.loading;
   });
   const dispatch = useDispatch();
   React.useEffect(() => {
@@ -67,131 +70,139 @@ export default function SignIn() {
           }}
           width={"100%"}
         ></Box>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            height: "max--content",
-            fontSize: "16px",
-            zIndex: "5",
-            position: "relative",
-            backgroundColor: "white",
-            padding: "18px",
-            borderRadius: "10px",
-            color: "white",
-            alignItems: "center",
-            background: "#0000006b",
-            width: "70%",
-          }}
-        >
-          <Typography variant="h4" fontWeight={"bold"} marginBottom={2}>
-            WELCOME
-          </Typography>
-          {/*  */}
-          <FormControl
-            sx={{ m: 1, width: "90%", background: "var(--p--main)" }}
-            variant="filled"
+        {loading ? (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: "max--content",
+              fontSize: "16px",
+              zIndex: "5",
+              position: "relative",
+              backgroundColor: "white",
+              padding: "18px",
+              borderRadius: "10px",
+              color: "white",
+              alignItems: "center",
+              background: "#0000006b",
+              width: "70%",
+            }}
           >
-            <InputLabel htmlFor="filled-adornment-user">UserName</InputLabel>
-            <FilledInput
-              sx={{ color: "white" }}
-              id="filled-adornment-user"
-              type="text"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton edge="end" sx={{ color: "white" }}>
-                    <AssignmentInd />
-                  </IconButton>
-                </InputAdornment>
-              }
-              onInput={(e) => {
-                setUser(e.target.value);
-              }}
-              onFocus={() => {
-                setError(false);
-              }}
-            />
-          </FormControl>
-          {/*  */}
-          <FormControl
-            sx={{ m: 1, width: "90%", background: "var(--p--main)" }}
-            variant="filled"
-          >
-            <InputLabel htmlFor="filled-adornment-password">
-              Password
-            </InputLabel>
-            <FilledInput
-              sx={{ color: "white" }}
-              id="filled-adornment-password"
-              type={showPassword ? "text" : "password"}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                    sx={{ color: "white" }}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              onInput={(e) => {
-                setPass(e.target.value);
-              }}
-              onFocus={() => {
-                setError(false);
-              }}
-            />
-          </FormControl>
-          {error && (
+            <Typography variant="h4" fontWeight={"bold"} marginBottom={2}>
+              WELCOME
+            </Typography>
+            {/*  */}
+            <FormControl
+              sx={{ m: 1, width: "90%", background: "var(--p--main)" }}
+              variant="filled"
+            >
+              <InputLabel htmlFor="filled-adornment-user">UserName</InputLabel>
+              <FilledInput
+                sx={{ color: "white" }}
+                id="filled-adornment-user"
+                type="text"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton edge="end" sx={{ color: "white" }}>
+                      <AssignmentInd />
+                    </IconButton>
+                  </InputAdornment>
+                }
+                onInput={(e) => {
+                  setUser(e.target.value);
+                }}
+                onFocus={() => {
+                  setError(false);
+                }}
+              />
+            </FormControl>
+            {/*  */}
+            <FormControl
+              sx={{ m: 1, width: "90%", background: "var(--p--main)" }}
+              variant="filled"
+            >
+              <InputLabel htmlFor="filled-adornment-password">
+                Password
+              </InputLabel>
+              <FilledInput
+                sx={{ color: "white" }}
+                id="filled-adornment-password"
+                type={showPassword ? "text" : "password"}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                      sx={{ color: "white" }}
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                onInput={(e) => {
+                  setPass(e.target.value);
+                }}
+                onFocus={() => {
+                  setError(false);
+                }}
+              />
+            </FormControl>
+            {error && (
+              <Alert
+                severity="error"
+                sx={{
+                  margin: 1,
+                  width: { xs: "80%", sm: "87%" },
+                  fontWeight: "bold",
+                }}
+              >
+                Wrong password or userName. Try again.
+              </Alert>
+            )}
             <Alert
-              severity="error"
+              severity="info"
               sx={{
                 margin: 1,
                 width: { xs: "80%", sm: "87%" },
                 fontWeight: "bold",
               }}
             >
-              Wrong password or userName. Try again.
+              TEST! UserName:"admin" /Password:"admin"
             </Alert>
-          )}
-          <Alert
-            severity="info"
-            sx={{
-              margin: 1,
-              width: { xs: "80%", sm: "87%" },
-              fontWeight: "bold",
-            }}
-          >
-            TEST! UserName:"admin" /Password:"admin"
-          </Alert>
 
-          <Button
-            type="submit"
-            style={{
-              width: "50%",
-              height: "40px",
-              borderRadius: "30px",
-              fontWeight: "bold",
-              cursor: "pointer",
-              background: "transparent",
-              color: "white",
-              border: "2px solid",
-            }}
-            variant="outlined"
-            onClick={() => {
-              SignIn();
-            }}
-          >
-            Sign In
-          </Button>
-          {/*  */}
-        </form>
+            <Button
+              type="submit"
+              style={{
+                width: "50%",
+                height: "40px",
+                borderRadius: "30px",
+                fontWeight: "bold",
+                cursor: "pointer",
+                background: "transparent",
+                color: "white",
+                border: "2px solid",
+              }}
+              variant="outlined"
+              onClick={() => {
+                SignIn();
+              }}
+            >
+              Sign In
+            </Button>
+            {/*  */}
+          </form>
+        ) : (
+          <Box sx={{ width: "100%" }}>
+            <Skeleton />
+            <Skeleton animation="wave" />
+            <Skeleton animation={false} />
+          </Box>
+        )}
       </Box>
     </>
   );
