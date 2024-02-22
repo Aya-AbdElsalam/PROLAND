@@ -18,6 +18,7 @@ export default function LandingSection() {
           height: { xs: "130vh", md: "100vh" },
           overflow: "hidden",
           position: "relative",
+          backgroundSize: "cover",
         }}
         width="100"
       >
@@ -74,7 +75,13 @@ export default function LandingSection() {
                 filter: "brightness(0.5)",
               }}
             >
-              <img src={watch} height="100%" width={"100%"} alt=""></img>
+              <img
+                src={watch}
+                height="100%"
+                width={"100%"}
+                alt=""
+                fetchpriority="high"
+              ></img>
             </Paper>
           </Stack>
         </Container>

@@ -1,12 +1,6 @@
 import { Box, Stack } from "@mui/material";
-import { useEffect } from "react";
 
 export default function Footer() {
-  useEffect(() => {
-    document.querySelector(
-      ".footer-bottom"
-    ).innerHTML = `Created with love by Aya ©${new Date().getFullYear()}`;
-  }, []);
   return (
     <Box
       sx={{
@@ -28,7 +22,7 @@ export default function Footer() {
           className="footer-bottom text-white text-center fw-bold pb-5 position-relative"
           style={{ fontWeight: "bold", color: "white" }}
         >
-          Created with love by Aya
+          Created with love by Aya {new Date().getFullYear()}
         </div>
       </Stack>
     </Box>

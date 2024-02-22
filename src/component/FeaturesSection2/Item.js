@@ -18,7 +18,7 @@ export default function Item(props) {
         />
       </Box>
       <Box width={"350px"} flexGrow={1}>
-        <Typography variant="h5" fontWeight={"bold"} my={3}>
+        <Typography fontSize={"24px"} fontWeight={"bold"} my={3}>
           {props.title}
         </Typography>
         <Typography

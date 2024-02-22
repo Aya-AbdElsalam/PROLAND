@@ -70,7 +70,7 @@ export default function Team() {
             <CardContent>
               <Typography
                 gutterBottom
-                variant="h6"
+                fontSize={"20px"}
                 component="div"
                 width={loading ? "auto" : "200px"}
                 height={loading ? "auto" : "50px"}

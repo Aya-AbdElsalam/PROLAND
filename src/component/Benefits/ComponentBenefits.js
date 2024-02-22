@@ -10,7 +10,7 @@ export default function ComponentBenefits(props) {
     >
       <Icon sx={{ fontSize: "60px" }}>{props.icon}</Icon>
       <Box>
-        <Typography fontWeight={"bold"} variant="h6">
+        <Typography fontWeight={"bold"} fontSize={"20px"}>
           {props.title}
         </Typography>
         <Typography color={"var(--p--main)"}>{props.p}</Typography>

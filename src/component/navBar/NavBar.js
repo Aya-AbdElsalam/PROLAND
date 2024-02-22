@@ -117,7 +117,7 @@ export default function NavBar(props) {
               smooth={true}
               offset={-180}
               duration={1000}
-              style={{ flexGrow: 1, display: "flex" }}
+              style={{ flexGrow: 1, display: "flex", cursor: "pointer" }}
               onClick={() => {
                 navigate("/");
               }}
@@ -131,7 +131,6 @@ export default function NavBar(props) {
               <Typography
                 variant="h5"
                 noWrap
-                component="a"
                 href="#app-bar-with-responsive-menu"
                 sx={{
                   mr: 2,
@@ -214,7 +213,7 @@ export default function NavBar(props) {
             smooth={true}
             offset={-180}
             duration={1000}
-            style={{ flexGrow: 1, display: "flex" }}
+            style={{ flexGrow: 1, display: "flex", cursor: "pointer" }}
             onClick={() => {
               navigate("/");
             }}
@@ -225,7 +224,6 @@ export default function NavBar(props) {
             <Typography
               variant="h5"
               noWrap
-              component="a"
               href="#app-bar-with-responsive-menu"
               sx={{
                 mr: 2,

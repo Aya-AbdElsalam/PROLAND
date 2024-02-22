@@ -87,6 +87,7 @@ export default function MiniDrawer(props) {
         </IconButton>
       </DrawerHeader>
       <Divider sx={{ background: "white" }} />
+
       <List>
         <ListNavBar
           open={props.open}

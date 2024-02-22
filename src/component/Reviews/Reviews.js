@@ -60,7 +60,7 @@ export default function Reviews() {
             />
           </Stack>
           <Box mt={15}>
-            <Typography variant="h6" fontWeight={"500"}>
+            <Typography fontSize={"20px"} fontWeight={"500"}>
               AS FEATURED ON
             </Typography>
             <Stack direction={"row"} gap={4} flexWrap={"wrap"}>
@@ -71,9 +71,8 @@ export default function Reviews() {
                     flexGrow={1}
                     my={2}
                     fontSize={"23px"}
-                    variant="h5"
                     fontWeight={"bold"}
-                    sx={{ color: "var(--p--main)", opacity: ".5" }}
+                    sx={{ color: "var(--p--main)" }}
                   >
                     {e}
                   </Typography>

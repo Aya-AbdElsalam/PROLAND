@@ -1,4 +1,11 @@
-import { Box, Button, ListItem, ListItemText, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import {
   EmailOutlined,
   LocalPhone,
@@ -52,24 +59,27 @@ export default function Location() {
           >
             GET IN TOUCH
           </Typography>
-          <ListItem sx={{ margin: "0", padding: "0" }}>
-            <LocationOnOutlined sx={{ paddingRight: "15px" }} />
-            <ListItemText
-              primary="523 Sylvan Ave, 5th Floor"
-              secondary="Mountain View, CA 94041USA"
-            />
-          </ListItem>
-          <ListItem sx={{ margin: "0", padding: "0" }}>
-            <LocalPhone sx={{ paddingRight: "15px" }} />
-            <ListItemText
-              primary="+1 (234) 56789"
-              secondary="+1 987 654 3210"
-            />
-          </ListItem>
-          <ListItem sx={{ margin: "0", padding: "0" }}>
-            <EmailOutlined sx={{ paddingRight: "15px" }} />
-            <ListItemText primary="support@watchland.com" />
-          </ListItem>
+          <List>
+            <ListItem sx={{ margin: "0", padding: "0" }}>
+              <LocationOnOutlined sx={{ paddingRight: "15px" }} />
+              <ListItemText
+                primary="523 Sylvan Ave, 5th Floor"
+                secondary="Mountain View, CA 94041USA"
+              />
+            </ListItem>
+            <ListItem sx={{ margin: "0", padding: "0" }}>
+              <LocalPhone sx={{ paddingRight: "15px" }} />
+              <ListItemText
+                primary="+1 (234) 56789"
+                secondary="+1 987 654 3210"
+              />
+            </ListItem>
+            <ListItem sx={{ margin: "0", padding: "0" }}>
+              <EmailOutlined sx={{ paddingRight: "15px" }} />
+              <ListItemText primary="support@watchland.com" />
+            </ListItem>
+          </List>
+
           <Button
             variant="contained"
             sx={{

@@ -2,6 +2,7 @@ import {
   Box,
   Container,
   List,
+  ListItem,
   ListItemText,
   Stack,
   Typography,
@@ -34,13 +35,28 @@ export default function TechSpecs() {
                   width: "max-content",
                 }}
               >
-                <Typography variant="h6" fontWeight={"bold"} color={"black"}>
-                  Compatibility
-                </Typography>
-                <ListItemText primary={`iPhone iOS 7 & up `} />
-                <ListItemText primary={`Android 4.3 & uptexts `} />
-                <ListItemText primary={`Bluetooth 4.0`} />
-                <ListItemText primary={`Notification for calls / texts`} />
+                <ListItem sx={{ py: 0 }}>
+                  <Typography
+                    fontSize={"20px"}
+                    fontWeight={"bold"}
+                    color={"black"}
+                  >
+                    Compatibility
+                  </Typography>
+                </ListItem>
+
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`iPhone iOS 7 & up `} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Android 4.3 & uptexts `} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Bluetooth 4.0`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Notification for calls / texts`} />
+                </ListItem>
               </List>
             </Box>
             <Box width={"333px"} flexGrow={{ xs: 1, sm: 0, md: 0 }}>
@@ -50,15 +66,33 @@ export default function TechSpecs() {
                   width: "max-content",
                 }}
               >
-                <Typography variant="h6" fontWeight={"bold"} color={"black"}>
-                  App
-                </Typography>
-                <ListItemText primary={`Set daily goals`} />
-                <ListItemText primary={`Analyze history`} />
-                <ListItemText primary={`Sync to phone & cloud`} />
-                <ListItemText primary={`Connect to Apple health kit`} />
-                <ListItemText primary={`Connect to Google fit`} />
-                <ListItemText primary={`Watch firmware upgrade`} />
+                <ListItem sx={{ py: 0 }}>
+                  <Typography
+                    fontSize={"20px"}
+                    fontWeight={"bold"}
+                    color={"black"}
+                  >
+                    App
+                  </Typography>
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Set daily goals`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Analyze history`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Sync to phone & cloud`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Connect to Apple health kit`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Connect to Google fit`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Watch firmware upgrade`} />
+                </ListItem>
               </List>
             </Box>
             <Box width={"333px"} flexGrow={{ xs: 1, sm: 0, md: 0 }}>
@@ -68,14 +102,30 @@ export default function TechSpecs() {
                   width: "max-content",
                 }}
               >
-                <Typography variant="h6" fontWeight={"bold"} color={"black"}>
-                  Vibration silent alarms
-                </Typography>
-                <ListItemText primary={`Phone notifications `} />
-                <ListItemText primary={`Daily goal reached`} />
-                <ListItemText primary={`Daily wake-up alarm`} />
-                <ListItemText primary={`Location assistance`} />
-                <ListItemText primary={`Accessiblity features`} />
+                <ListItem sx={{ py: 0 }}>
+                  <Typography
+                    fontSize={"20px"}
+                    fontWeight={"bold"}
+                    color={"black"}
+                  >
+                    Vibration silent alarms
+                  </Typography>
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Phone notifications `} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Daily goal reached`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Daily wake-up alarm`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Location assistance`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Accessiblity features`} />
+                </ListItem>
               </List>
             </Box>
             <Box width={"333px"} flexGrow={{ xs: 1, sm: 0, md: 0 }}>
@@ -85,14 +135,31 @@ export default function TechSpecs() {
                   width: "max-content",
                 }}
               >
-                <Typography variant="h6" fontWeight={"bold"} color={"black"}>
-                  Watch
-                </Typography>
-                <ListItemText primary={`12.6mm thickness`} />
-                <ListItemText primary={`3.16L stainless steel case`} />
-                <ListItemText primary={`40mm diameter`} />
-                <ListItemText primary={`5 ATM water resistant`} />
-                <ListItemText primary={`Sapphire glass crystal`} />
+                {" "}
+                <ListItem sx={{ py: 0 }}>
+                  <Typography
+                    fontSize={"20px"}
+                    fontWeight={"bold"}
+                    color={"black"}
+                  >
+                    Watch
+                  </Typography>
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`12.6mm thickness`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`3.16L stainless steel case`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`40mm diameter`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`5 ATM water resistant`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Sapphire glass crystal`} />
+                </ListItem>
               </List>
             </Box>
             <Box width={"333px"} flexGrow={{ xs: 1, sm: 0, md: 0 }}>
@@ -102,12 +169,26 @@ export default function TechSpecs() {
                   width: "max-content",
                 }}
               >
-                <Typography variant="h6" fontWeight={"bold"} color={"black"}>
-                  Straps
-                </Typography>
-                <ListItemText primary={`Italian leather with natural lining`} />
-                <ListItemText primary={`Comfort sport fabric`} />
-                <ListItemText primary={`Quick-release pins`} />
+                <ListItem sx={{ py: 0 }}>
+                  <Typography
+                    fontSize={"20px"}
+                    fontWeight={"bold"}
+                    color={"black"}
+                  >
+                    Straps
+                  </Typography>
+                </ListItem>{" "}
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText
+                    primary={`Italian leather with natural lining`}
+                  />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Comfort sport fabric`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Quick-release pins`} />
+                </ListItem>
               </List>
             </Box>
             <Box width={"333px"} flexGrow={{ xs: 1, sm: 0, md: 0 }}>
@@ -117,13 +198,27 @@ export default function TechSpecs() {
                   width: "max-content",
                 }}
               >
-                <Typography variant="h6" fontWeight={"bold"} color={"black"}>
-                  Activity tracking
-                </Typography>
-                <ListItemText primary={`Step counting`} />
-                <ListItemText primary={`Distance`} />
-                <ListItemText primary={`Calories burned `} />
-                <ListItemText primary={`Swimming (strokes)`} />
+                <ListItem sx={{ py: 0 }}>
+                  <Typography
+                    fontSize={"20px"}
+                    fontWeight={"bold"}
+                    color={"black"}
+                  >
+                    Activity tracking
+                  </Typography>
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Step counting`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Distance`} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Calories burned `} />
+                </ListItem>
+                <ListItem sx={{ py: 0 }}>
+                  <ListItemText primary={`Swimming (strokes)`} />
+                </ListItem>
               </List>
             </Box>
           </Stack>

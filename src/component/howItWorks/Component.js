@@ -7,7 +7,7 @@ export default function Component(props) {
         {props.icon}
       </Icon>
       {props.TitleFound && (
-        <Typography variant="h5" fontWeight={"bold"}>
+        <Typography fontSize={"24px"} fontWeight={"bold"}>
           {props.title}
         </Typography>
       )}
@@ -15,7 +15,7 @@ export default function Component(props) {
       {props.LogoFound && (
         <Typography
           my={4}
-          variant="h5"
+          fontSize={"24px"}
           fontWeight={"bold"}
           sx={{ color: "var(--p--main)" }}
         >

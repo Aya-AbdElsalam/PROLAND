@@ -57,7 +57,7 @@ function App() {
               <DashBoard></DashBoard>
             ) : (
               <>
-                <NavBar></NavBar>
+                <NavBar />
                 <SignIn></SignIn>
               </>
             )

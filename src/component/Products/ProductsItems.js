@@ -307,7 +307,7 @@ export default function ProductsItems() {
                   <CardContent>
                     <Typography
                       gutterBottom
-                      variant="h6"
+                      fontSize={"20px"}
                       component="div"
                       color={"var(--bg--second)"}
                     >
