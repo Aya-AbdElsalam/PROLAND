@@ -1,9 +1,23 @@
-<<<<<<< HEAD
-# PROLAND
-=======
-<<<<<<< HEAD
-# PROLAND
-=======
+# About the Project
+Experience Proland's specialized smartwatch platform: from a comprehensive product showcase to quick product views, seamless member management, and effortless product inventory control. Visual aids such as graphical maps offer insightful depictions of sales percentages and visitor statistics, ensuring informed decision-making.
+<br/>
+👉 **features :** Quick product view, add/remove members, and add/remove product
+<br />
+  <br />
+
+👉 **Live Demo :** (https://proland-phi.vercel.app/)
+
+# The site
+![proland](https://github.com/Aya-AbdElsalam/PROLAND/assets/152267387/c6744a3b-8cbc-4498-b3c6-bdd382c38174)
+![proland3](https://github.com/Aya-AbdElsalam/PROLAND/assets/152267387/63ef08c1-a9f1-4106-b436-a6cfd5ecfc63)
+![proland2](https://github.com/Aya-AbdElsalam/PROLAND/assets/152267387/9e8c2a60-59c6-44b1-bc38-619271786d31)
+
+# Tools
+- React.js
+- MUI
+- Nivo
+- Redux Toollkit
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
